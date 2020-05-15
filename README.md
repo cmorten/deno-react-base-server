@@ -7,21 +7,27 @@ Minimal React SSR Base Server in Deno.
 Write your React application and export the top level component as the default export:
 
 ```tsx
-import { React } from "https://unpkg.com/es-react";
+import React from "https://dev.jspm.io/react@16.13.1";
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
+      button: any;
       div: any;
       h1: any;
+      p: any;
     }
   }
 }
 
 const App = () => {
+  const [count, setCount] = React.useState(0);
+
   return (
     <div>
-      <h1>Hello Deno!</h1>
+      <h1>Hello DenoLand!</h1>
+      <button onClick={() => setCount(count + 1)}>Click the 🦕</button>
+      <p>You clicked the 🦕 {count} times</p>
     </div>
   );
 };

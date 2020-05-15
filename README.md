@@ -2,7 +2,17 @@
 
 Minimal React SSR Base Server in Deno.
 
-## Example
+## Usage
+
+### Using the CLI
+
+Run the example application in this repo on port 3000 using SSR:
+
+```console
+deno run --allow-net --allow-read --reload "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/cli.tsx" --port 3000 --path "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/app.tsx"
+```
+
+### Using the module
 
 Write your React application and export the top level component as the default export:
 

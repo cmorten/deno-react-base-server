@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std/http/server.ts";
 import { posix } from "https://deno.land/std/path/mod.ts";
-import { React } from "https://unpkg.com/es-react";
-import ReactDOMServer from "https://dev.jspm.io/react-dom/server";
+import React from "https://dev.jspm.io/react@16.13.1";
+import ReactDOMServer from "https://dev.jspm.io/react-dom@16.13.1/server";
 
 const browserBundlePath = "/browser.js";
 
@@ -19,13 +19,15 @@ const baseServer = async ({
     const { default: App } = await import(appModulePath);
 
     if (url === "/") {
+      const headers = new Headers();
+      headers.set("content-type", "text/html; charset=utf-8");
+
       req.respond({
         body:
-          `<html><head><script type="module" src="${browserBundlePath}"></script></head><body>${
-            ReactDOMServer.renderToString(
-              <App />,
-            )
+          `<html><head><script type="module" src="${browserBundlePath}"></script><style>* { font-family: Helvetica; }</style></head><body>${
+            ReactDOMServer.renderToString(<App />)
           }</body></html>`,
+        headers,
       });
     } else if (url === browserBundlePath) {
       const headers = new Headers();
@@ -33,7 +35,7 @@ const baseServer = async ({
 
       req.respond({
         body:
-          `import { React, ReactDOM } from "https://unpkg.com/es-react";\nconst App = ${App};\nReactDOM.hydrate(<App />, document.body);`,
+          `import React from "https://dev.jspm.io/react@16.13.1";\nimport ReactDOM from "https://dev.jspm.io/react-dom@16.13.1";\nconst App = ${App};\nReactDOM.hydrate(React.createElement(App), document.body);`,
         headers,
       });
     } else {

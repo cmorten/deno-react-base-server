@@ -46,6 +46,8 @@ baseServer({
 });
 ```
 
+Where `appModulePath` is the path to your app component module. Can be any path that Deno's import supports, i.e. relative / absolute file path, URL etc.
+
 Then you can run your application using `deno`:
 
 ```console

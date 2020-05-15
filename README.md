@@ -43,5 +43,5 @@ baseServer({
 Then you can run your application using `deno`:
 
 ```console
-deno run --allow-net --allow-read "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/entrypoint.tsx"
+deno run --allow-net --allow-read --reload "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/entrypoint.tsx"
 ```

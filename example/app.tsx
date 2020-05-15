@@ -12,7 +12,7 @@ declare global {
 }
 
 const App = () => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = (React as any).useState(0);
 
   return (
     <div>

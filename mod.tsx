@@ -25,7 +25,7 @@ const baseServer = async ({
       req.respond({
         body:
           `<html><head><script type="module" src="${browserBundlePath}"></script><style>* { font-family: Helvetica; }</style></head><body>${
-            ReactDOMServer.renderToString(<App />)
+            (ReactDOMServer as any).renderToString(<App />)
           }</body></html>`,
         headers,
       });

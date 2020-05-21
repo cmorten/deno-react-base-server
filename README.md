@@ -4,7 +4,7 @@ Minimal React SSR Base Server in Deno.
 
 ## Usage
 
-### Using the CLI
+### Using the CLI
 
 Run the example application in this repo on port 3000 using SSR:
 

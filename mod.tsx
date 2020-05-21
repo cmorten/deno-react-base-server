@@ -1,7 +1,7 @@
-import { serve } from "https://deno.land/std/http/server.ts";
-import { posix } from "https://deno.land/std/path/mod.ts";
 import React from "https://dev.jspm.io/react@16.13.1";
 import ReactDOMServer from "https://dev.jspm.io/react-dom@16.13.1/server";
+import opine from "https://raw.githubusercontent.com/asos-craigmorten/opine/master/mod.ts";
+import { Application } from "https://raw.githubusercontent.com/asos-craigmorten/opine/master/typings/index.d.ts";
 
 const browserBundlePath = "/browser.js";
 
@@ -11,37 +11,30 @@ const baseServer = async ({
 }: {
   appModulePath: string;
   port: number;
-}): Promise<void> => {
-  const app = serve({ port });
+}): Promise<Application> => {
+  const app = opine();
 
-  for await (const req of app) {
-    const url = posix.normalize(req.url);
-    const { default: App } = await import(appModulePath);
+  const { default: App } = await import(appModulePath);
 
-    if (url === "/") {
-      const headers = new Headers();
-      headers.set("content-type", "text/html; charset=utf-8");
+  const js =
+    `import React from "https://dev.jspm.io/react@16.13.1";\nimport ReactDOM from "https://dev.jspm.io/react-dom@16.13.1";\nconst App = ${App};\nReactDOM.hydrate(React.createElement(App), document.body);`;
 
-      req.respond({
-        body:
-          `<html><head><script type="module" src="${browserBundlePath}"></script><style>* { font-family: Helvetica; }</style></head><body>${
-            (ReactDOMServer as any).renderToString(<App />)
-          }</body></html>`,
-        headers,
-      });
-    } else if (url === browserBundlePath) {
-      const headers = new Headers();
-      headers.set("content-type", "application/javascript");
+  const html =
+    `<html><head><script type="module" src="${browserBundlePath}"></script><style>* { font-family: Helvetica; }</style></head><body>${
+      (ReactDOMServer as any).renderToString(<App />)
+    }</body></html>`;
 
-      req.respond({
-        body:
-          `import React from "https://dev.jspm.io/react@16.13.1";\nimport ReactDOM from "https://dev.jspm.io/react-dom@16.13.1";\nconst App = ${App};\nReactDOM.hydrate(React.createElement(App), document.body);`,
-        headers,
-      });
-    } else {
-      req.respond({ body: "404 Not Found" });
-    }
-  }
+  app.use(browserBundlePath, (_req, res, _next) => {
+    res.type("application/javascript").send(js);
+  });
+
+  app.use("/", (_req, res, _next) => {
+    res.type("text/html").send(html);
+  });
+
+  app.listen({ port });
+
+  return app;
 };
 
 export default baseServer;

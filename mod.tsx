@@ -1,7 +1,7 @@
 import React from "https://dev.jspm.io/react@16.13.1";
 import ReactDOMServer from "https://dev.jspm.io/react-dom@16.13.1/server";
-import opine from "https://raw.githubusercontent.com/asos-craigmorten/opine/master/mod.ts";
-import { Application } from "https://raw.githubusercontent.com/asos-craigmorten/opine/master/typings/index.d.ts";
+import opine from "https://raw.githubusercontent.com/asos-craigmorten/opine/0.0.4/mod.ts";
+import { Application } from "https://raw.githubusercontent.com/asos-craigmorten/opine/0.0.4/typings/index.d.ts";
 
 const browserBundlePath = "/browser.js";
 

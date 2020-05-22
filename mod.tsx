@@ -1,7 +1,7 @@
 import React from "https://dev.jspm.io/react@16.13.1";
 import ReactDOMServer from "https://dev.jspm.io/react-dom@16.13.1/server";
-import opine from "https://raw.githubusercontent.com/asos-craigmorten/opine/0.0.4/mod.ts";
-import { Application } from "https://raw.githubusercontent.com/asos-craigmorten/opine/0.0.4/typings/index.d.ts";
+import opine from "https://deno.land/x/opine@0.0.4/mod.ts";
+import { Opine } from "https://deno.land/x/opine@0.0.4/typings/index.d.ts";
 
 const browserBundlePath = "/browser.js";
 
@@ -11,7 +11,7 @@ const baseServer = async ({
 }: {
   appModulePath: string;
   port: number;
-}): Promise<Application> => {
+}): Promise<Opine> => {
   const app = opine();
 
   const { default: App } = await import(appModulePath);

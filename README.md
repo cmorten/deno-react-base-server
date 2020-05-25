@@ -65,7 +65,7 @@ Where `appModulePath` is the path to your app component module. This can be any 
 Then you can run your application using the Deno `run` command and passing the path to your entrypoint script. For example:
 
 ```console
-deno run --allow-net --allow-read "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/entrypoint.ts"
+deno run --allow-net --allow-read --reload "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/entrypoint.ts"
 ```
 
 ### Using the CLI
@@ -75,7 +75,7 @@ You can also use the [cli.ts](./cli.ts) module to run your React application dir
 For example, to start the example application in this repo on port 3000 we run the [cli.ts](./cli.ts) module and pass the port and path to our top-level React component module as flags.
 
 ```console
-deno run --allow-net --allow-read "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/cli.ts" --port 3000 --path "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/app.tsx"
+deno run --allow-net --allow-read --reload "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/cli.ts" --port 3000 --path "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/app.tsx"
 ```
 
 **Note:** As with the [module](#using-the-module) usage, the top-level React component module provided to the `--path` flag must be exported as the _default export_.

@@ -1,4 +1,4 @@
-import React from "https://dev.jspm.io/react@16.13.1";
+import { React } from "../dep.ts";
 
 declare global {
   namespace JSX {

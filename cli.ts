@@ -1,4 +1,4 @@
-import { parse } from "https://deno.land/std@0.52.0/flags/mod.ts";
+import { parse } from "./dep.ts";
 import baseServer from "./mod.tsx";
 
 if (import.meta.main) {

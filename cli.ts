@@ -6,4 +6,6 @@ if (import.meta.main) {
   const { path, port = 3000 } = parse(args);
 
   baseServer({ appModulePath: path, port: port });
+
+  console.log(`Listening on port ${port}`);
 }

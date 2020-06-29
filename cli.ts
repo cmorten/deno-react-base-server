@@ -1,4 +1,4 @@
-import { parse } from "./dep.ts";
+import { parse } from "./deps.ts";
 import baseServer from "./mod.tsx";
 
 if (import.meta.main) {

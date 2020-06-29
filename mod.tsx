@@ -2,16 +2,13 @@ import {
   opine,
   React,
   ReactDOMServer,
-  Request,
-  Response,
-  NextFunction,
-} from "./dep.ts";
+} from "./deps.ts";
 
 const browserBundlePath = "/browser.js";
 
 const baseServer = async ({
   appModulePath,
-  port = 8080,
+  port = 3000,
 }: {
   appModulePath: string;
   port: number;
@@ -28,24 +25,11 @@ const baseServer = async ({
       (ReactDOMServer as any).renderToString(<App />)
     }</body></html>`;
 
-  // Note that you wouldn't normally need to specify types for `req`, `res` and `next`.
-  // Deno v1.0.1 introduced a bug where it dropped support for `.tsx` files resulting in
-  // breaking typescript errors.
-  //
-  // This should be fixed in Deno v1.0.3.
-  //
-  // REF:
-  // - https://github.com/denoland/deno/issues/5776
-  // - https://github.com/denoland/deno/issues/5772
-  // - https://github.com/denoland/deno/pull/5785
-  app.use(
-    browserBundlePath,
-    (req: Request, res: Response, next: NextFunction) => {
-      res.type("application/javascript").send(js);
-    },
-  );
+  app.use(browserBundlePath, (req, res, next) => {
+    res.type("application/javascript").send(js);
+  });
 
-  app.use("/", (req: Request, res: Response, next: NextFunction) => {
+  app.use("/", (req, res, next) => {
     res.type("text/html").send(html);
   });
 

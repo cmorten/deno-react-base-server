@@ -1,4 +1,4 @@
-import { React } from "../dep.ts";
+import { React } from "../deps.ts";
 
 declare global {
   namespace JSX {

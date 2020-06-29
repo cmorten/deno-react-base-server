@@ -2,6 +2,8 @@
 
 Minimal React SSR Base Server in Deno.
 
+As featured in [Open JS World 2020](https://www.youtube.com/watch?v=doug6st5vAs).
+
 Please use this as an a small demo of how you _could_ write a React SSR application in Deno, and as a useful utility for quickly rendering any React component with SSR.
 
 This server uses the [Opine](https://github.com/asos-craigmorten/opine) web framework for Deno.
@@ -50,12 +52,12 @@ Then create an entrypoint script to run your React application on a specified po
 
 ```tsx
 // Import deno-react-base-server
-import baseServer from "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/mod.tsx";
+import baseServer from "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/main/mod.tsx";
 
 // Update `appModulePath` from the example React component to your own.
 baseServer({
   appModulePath:
-    "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/app.tsx",
+    "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/main/example/app.tsx",
   port: 3000,
 });
 ```
@@ -65,7 +67,7 @@ Where `appModulePath` is the path to your app component module. This can be any 
 Then you can run your application using the Deno `run` command and passing the path to your entrypoint script. For example:
 
 ```console
-deno run --allow-net --allow-read --reload "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/entrypoint.ts"
+deno run --allow-net --allow-read "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/main/example/entrypoint.ts"
 ```
 
 ### Using the CLI
@@ -75,7 +77,7 @@ You can also use the [cli.ts](./cli.ts) module to run your React application dir
 For example, to start the example application in this repo on port 3000 we run the [cli.ts](./cli.ts) module and pass the port and path to our top-level React component module as flags.
 
 ```console
-deno run --allow-net --allow-read --reload "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/cli.ts" --port 3000 --path "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/master/example/app.tsx"
+deno run --allow-net --allow-read "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/main/cli.ts" --port 3000 --path "https://raw.githubusercontent.com/asos-craigmorten/deno-react-base-server/main/example/app.tsx"
 ```
 
 **Note:** As with the [module](#using-the-module) usage, the top-level React component module provided to the `--path` flag must be exported as the _default export_.
@@ -84,8 +86,7 @@ deno run --allow-net --allow-read --reload "https://raw.githubusercontent.com/as
 
 This project has been tested with the following versions:
 
-- 1.0.0
-- 1.0.2
+- 1.1.2
 
 Once Deno is installed, you can easily switch between Deno versions using the `upgrade` command:
 

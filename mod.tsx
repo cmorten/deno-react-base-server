@@ -18,12 +18,12 @@ const baseServer = async ({
   const { default: App } = await import(appModulePath);
 
   const js =
-    `import React from "https://dev.jspm.io/react@16.13.1";\nimport ReactDOM from "https://dev.jspm.io/react-dom@16.13.1";\nconst App = ${App};\nReactDOM.hydrate(React.createElement(App), document.body);`;
+    `import React from "https://dev.jspm.io/react@16.13.1";\nimport ReactDOM from "https://dev.jspm.io/react-dom@16.13.1";\nconst App = ${App};\nReactDOM.hydrate(React.createElement(App), document.getElementById("react-root"));`;
 
   const html =
-    `<html><head><script type="module" src="${browserBundlePath}"></script><style>* { font-family: Helvetica; }</style></head><body>${
+    `<html><head><script type="module" src="${browserBundlePath}"></script><style>* { font-family: Helvetica; }</style></head><body><div id="react-root">${
       (ReactDOMServer as any).renderToString(<App />)
-    }</body></html>`;
+    }</div></body></html>`;
 
   app.use(browserBundlePath, (req, res, next) => {
     res.type("application/javascript").send(js);

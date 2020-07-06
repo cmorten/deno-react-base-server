@@ -2,11 +2,11 @@
 
 Minimal React SSR Base Server in Deno.
 
-As featured in [Open JS World 2020](https://www.youtube.com/watch?v=doug6st5vAs).
+> As featured in [Open JS World 2020](https://www.youtube.com/watch?v=doug6st5vAs).
 
-Please use this as an a small demo of how you _could_ write a React SSR application in Deno, and as a useful utility for quickly rendering any React component with SSR.
+Please use this as an a small demo of how you _could_ write a React SSR application in Deno, and as a useful utility for quickly rendering any React component with SSR. For a walk-through check out [this article](https://dev.to/craigmorten/writing-a-react-ssr-app-in-deno-2m7).
 
-This server uses the [Opine](https://github.com/asos-craigmorten/opine) web framework for Deno.
+This server uses the [Opine](https://github.com/asos-craigmorten/opine) web framework for Deno. For a more complex React SSR example using bundling, check out the [React example](https://github.com/asos-craigmorten/opine/tree/main/examples/react) on the Opine project.
 
 ## Usage
 

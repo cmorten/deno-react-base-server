@@ -6,7 +6,9 @@ Minimal React SSR Base Server in Deno.
 
 Please use this as an a small demo of how you _could_ write a React SSR application in Deno, and as a useful utility for quickly rendering any React component with SSR. For a walk-through check out [this article](https://dev.to/craigmorten/writing-a-react-ssr-app-in-deno-2m7).
 
-This server uses the [Opine](https://github.com/asos-craigmorten/opine) web framework for Deno. For a more complex React SSR example using bundling, check out the [React example](https://github.com/asos-craigmorten/opine/tree/main/examples/react) on the Opine project.
+This server uses the [Opine](https://github.com/asos-craigmorten/opine) web framework for Deno.
+
+**Recommendation**: For a more complex / better React SSR example using bundling, check out the [React example](https://github.com/asos-craigmorten/opine/tree/main/examples/react) on the Opine project.
 
 ## Usage
 
@@ -86,7 +88,7 @@ deno run --allow-net --allow-read "https://raw.githubusercontent.com/asos-craigm
 
 This project has been tested with the following versions:
 
-- 1.1.2
+- 1.2.2
 
 Once Deno is installed, you can easily switch between Deno versions using the `upgrade` command:
 
